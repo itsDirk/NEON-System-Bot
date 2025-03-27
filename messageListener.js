@@ -2,8 +2,7 @@ import pkg from "discord.js";
 import "dotenv/config";
 const { Client, GatewayIntentBits } = pkg;
 
-// const channelId = process.env.CHANNEL_ID;
-const channelId = "1354219423178821692";
+const channelId = process.env.FIELD_REPORT_CHANNEL;
 
 const discordClient = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],

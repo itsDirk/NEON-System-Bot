@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import { InstallGlobalCommands } from './utils.js';
 
-// Simple test command
 const STATS_COMMAND = {
   name: 'stats',
   description: 'Basic command',
