@@ -22,10 +22,23 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
 
 
     if (name === 'stats') {
+      console.log(req.body);
+
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           content: `Hello world!`,
+        },
+      });
+    }
+
+    if (name === 'points') {
+      console.log(req.body);
+
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: `Hello world! Response from points command`,
         },
       });
     }
