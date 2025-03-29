@@ -2,8 +2,6 @@ import pkg from "discord.js";
 import "dotenv/config";
 const { Client, GatewayIntentBits } = pkg;
 
-const channelId = process.env.FIELD_REPORT_CHANNEL;
-
 const discordClient = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
 });
@@ -14,12 +12,14 @@ discordClient.once("ready", (c) => {
 
 discordClient.on("messageCreate", async (messageObject) => {
   if (messageObject.author.bot) return;
-  if (messageObject.channel.id !== channelId) return;
+  if (messageObject.channel.id !== process.env.FIELD_REPORT_CHANNEL) return;
 
   let mentionedUsers = messageObject.mentions.users;
   console.log(mentionedUsers);
 
-  await messageObject.react("📣");
+  if (mentionedUsers.size > 0) {
+    await messageObject.react("📣");
+  }
 });
 
 export async function startChannelListener() {
